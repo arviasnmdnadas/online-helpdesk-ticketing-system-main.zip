@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Manage Tickets</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div>
+      <div class="sidebar-logo">💬</div>
+      <h2>Online Helpdesk<br>Ticketing System</h2>
+
+      <nav>
+        <a href="admin.html">Dashboard</a>
+        <a href="tickets.html">Tickets</a>
+        <a href="users.html">Users</a>
+      </nav>
+    </div>
+
+    <button class="logout-btn" onclick="logoutUser()">Logout</button>
+  </aside>
+
+  <main class="main-content">
+
+    <div class="top-actions">
+      <div></div>
+
+      <div class="right-actions">
+        <div class="notification-area">
+          <button class="notification-bell" onclick="toggleNotifications()">
+            🔔
+            <span id="notificationCount">0</span>
+          </button>
+
+          <div class="notification-dropdown" id="notificationDropdown">
+            <h4>Notifications</h4>
+            <ul id="notificationList">
+              <li>No notifications yet.</li>
+            </ul>
+          </div>
+        </div>
+
+        <label class="theme-toggle-mini">
+          <input type="checkbox" id="themeSwitch" onchange="toggleTheme()">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+
+    <div class="page-header">
+      <h1>Manage Tickets</h1>
+      <p>Search, filter, update, reply, and manage submitted tickets.</p>
+    </div>
+
+    <section class="panel">
+      <div class="filter-bar">
+        <input type="text" id="searchInput" placeholder="Search ticket title..." onkeyup="fetchAdminTickets()">
+
+        <select id="statusFilter" onchange="fetchAdminTickets()">
+          <option value="all">All Status</option>
+          <option value="pending">Pending</option>
+          <option value="in progress">In Progress</option>
+          <option value="resolved">Resolved</option>
+          <option value="closed">Closed</option>
+        </select>
+
+        <select id="priorityFilter" onchange="fetchAdminTickets()">
+          <option value="all">All Priority</option>
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+          <option value="urgent">Urgent</option>
+        </select>
+
+        <button onclick="fetchAdminTickets()">Refresh</button>
+      </div>
+
+      <ul id="ticketList"></ul>
+    </section>
+  </main>
+</div>
+
+<div class="modal-overlay" id="confirmModal">
+  <div class="modal-box">
+    <h3>Confirmation</h3>
+    <p id="modalMessage">Are you sure?</p>
+
+    <div class="modal-buttons">
+      <button onclick="confirmYes()">Yes</button>
+      <button class="danger-btn" onclick="closeModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div id="liveNotificationBox" class="live-notification-box"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

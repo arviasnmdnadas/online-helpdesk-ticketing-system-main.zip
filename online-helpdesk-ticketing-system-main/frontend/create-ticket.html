@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Ticket</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div>
+      <div class="sidebar-logo">💬</div>
+      <h2>Online Helpdesk<br>Ticketing System</h2>
+
+      <nav>
+        <a href="create-ticket.html">Create Ticket</a>
+        <a href="user.html">My Tickets</a>
+      </nav>
+    </div>
+
+    <button class="logout-btn" onclick="logoutUser()">Logout</button>
+  </aside>
+
+  <main class="main-content">
+
+    <div class="top-actions">
+      <div></div>
+
+      <div class="right-actions">
+        <div class="notification-area">
+          <button class="notification-bell" onclick="toggleNotifications()">
+            🔔
+            <span id="notificationCount">0</span>
+          </button>
+
+          <div class="notification-dropdown" id="notificationDropdown">
+            <h4>Notifications</h4>
+            <ul id="notificationList">
+              <li>No notifications yet.</li>
+            </ul>
+          </div>
+        </div>
+
+        <label class="theme-toggle-mini">
+          <input type="checkbox" id="themeSwitch" onchange="toggleTheme()">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+
+    <div class="page-header">
+      <h1>Create Support Ticket</h1>
+      <p>Submit your concern and wait for admin response.</p>
+    </div>
+
+    <section class="panel">
+      <h2>Create New Ticket</h2>
+
+      <label>Title</label>
+      <input type="text" id="ticketTitle" placeholder="Issue Title">
+
+      <label>Description</label>
+      <textarea id="ticketDescription" placeholder="Describe the problem in detail..."></textarea>
+
+      <label>Priority</label>
+      <select id="ticketPriority">
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+        <option value="urgent">Urgent</option>
+      </select>
+
+      <button onclick="createTicket()">Submit Ticket</button>
+    </section>
+
+  </main>
+</div>
+
+<div class="modal-overlay" id="confirmModal">
+  <div class="modal-box">
+    <h3>Confirmation</h3>
+    <p id="modalMessage">Are you sure?</p>
+
+    <div class="modal-buttons">
+      <button onclick="confirmYes()">Yes</button>
+      <button class="danger-btn" onclick="closeModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div id="liveNotificationBox" class="live-notification-box"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

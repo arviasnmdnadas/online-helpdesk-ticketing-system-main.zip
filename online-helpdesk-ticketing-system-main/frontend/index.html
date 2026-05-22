@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Online Helpdesk Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-body">
+
+  <div class="auth-top-actions">
+    <label class="theme-toggle-mini">
+      <input type="checkbox" id="themeSwitch" onchange="toggleTheme()">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="auth-background">
+    <div class="auth-card">
+      <div class="auth-logo">💬</div>
+
+      <h1>Online Helpdesk</h1>
+      <p class="auth-subtitle">Sign in to access the ticketing system</p>
+
+      <input type="text" id="username" placeholder="Username">
+      <input type="password" id="password" placeholder="Password">
+
+      <button onclick="loginUser()">Login</button>
+
+      <p id="message"></p>
+
+      <p class="auth-link">
+        No account yet?
+        <a href="register.html">Register here</a>
+      </p>
+    </div>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>

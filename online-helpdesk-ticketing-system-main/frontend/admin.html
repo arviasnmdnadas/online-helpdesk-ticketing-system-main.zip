@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div>
+      <div class="sidebar-logo">💬</div>
+      <h2>Online Helpdesk<br>Ticketing System</h2>
+
+      <nav>
+        <a href="admin.html">Dashboard</a>
+        <a href="tickets.html">Tickets</a>
+        <a href="users.html">Users</a>
+      </nav>
+    </div>
+
+    <button class="logout-btn" onclick="logoutUser()">Logout</button>
+  </aside>
+
+  <main class="main-content">
+
+    <div class="top-actions">
+      <div></div>
+
+      <div class="right-actions">
+        <div class="notification-area">
+          <button class="notification-bell" onclick="toggleNotifications()">
+            🔔
+            <span id="notificationCount">0</span>
+          </button>
+
+          <div class="notification-dropdown" id="notificationDropdown">
+            <h4>Notifications</h4>
+            <ul id="notificationList">
+              <li>No notifications yet.</li>
+            </ul>
+          </div>
+        </div>
+
+        <label class="theme-toggle-mini">
+          <input type="checkbox" id="themeSwitch" onchange="toggleTheme()">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+
+    <div class="page-header">
+      <h1>Dashboard Overview</h1>
+      <p>Monitor tickets, users, activities, and system performance.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat-card"><h3>Total Tickets</h3><p id="totalCount">0</p></div>
+      <div class="stat-card"><h3>Pending</h3><p id="pendingCount">0</p></div>
+      <div class="stat-card"><h3>In Progress</h3><p id="inProgressCount">0</p></div>
+      <div class="stat-card"><h3>Resolved</h3><p id="resolvedCount">0</p></div>
+      <div class="stat-card"><h3>Closed</h3><p id="closedCount">0</p></div>
+      <div class="stat-card"><h3>Total Users</h3><p id="totalUsers">0</p></div>
+    </div>
+
+    <section class="panel">
+      <h2>Ticket Status Analytics</h2>
+
+      <div class="analytics-list">
+        <div class="analytics-row">
+          <span>Pending</span>
+          <div class="bar-bg"><div class="bar-fill pending-bar" id="pendingBar"></div></div>
+          <small id="pendingPercent">0%</small>
+        </div>
+
+        <div class="analytics-row">
+          <span>In Progress</span>
+          <div class="bar-bg"><div class="bar-fill progress-bar" id="inProgressBar"></div></div>
+          <small id="inProgressPercent">0%</small>
+        </div>
+
+        <div class="analytics-row">
+          <span>Resolved</span>
+          <div class="bar-bg"><div class="bar-fill resolved-bar" id="resolvedBar"></div></div>
+          <small id="resolvedPercent">0%</small>
+        </div>
+
+        <div class="analytics-row">
+          <span>Closed</span>
+          <div class="bar-bg"><div class="bar-fill closed-bar" id="closedBar"></div></div>
+          <small id="closedPercent">0%</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Priority Analytics</h2>
+
+      <div class="stats compact-stats">
+        <div class="stat-card"><h3>Low</h3><p id="lowPriorityCount">0</p></div>
+        <div class="stat-card"><h3>Medium</h3><p id="mediumPriorityCount">0</p></div>
+        <div class="stat-card"><h3>High</h3><p id="highPriorityCount">0</p></div>
+        <div class="stat-card"><h3>Urgent</h3><p id="urgentPriorityCount">0</p></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>System Overview</h2>
+      <p>This dashboard provides an overview of the helpdesk ticketing system including active tickets, resolved issues, priority levels, and user management operations.</p>
+    </section>
+
+    <section class="panel">
+      <h2>System Activity</h2>
+      <ul class="activity-list" id="activityList">
+        <li>Loading activity...</li>
+      </ul>
+    </section>
+  </main>
+</div>
+
+<div class="modal-overlay" id="confirmModal">
+  <div class="modal-box">
+    <h3>Confirmation</h3>
+    <p id="modalMessage">Are you sure?</p>
+
+    <div class="modal-buttons">
+      <button onclick="confirmYes()">Yes</button>
+      <button class="danger-btn" onclick="closeModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div id="liveNotificationBox" class="live-notification-box"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

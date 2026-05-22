@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Manage Users</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div>
+      <div class="sidebar-logo">💬</div>
+      <h2>Online Helpdesk<br>Ticketing System</h2>
+
+      <nav>
+        <a href="admin.html">Dashboard</a>
+        <a href="tickets.html">Tickets</a>
+        <a href="users.html">Users</a>
+      </nav>
+    </div>
+
+    <button class="logout-btn" onclick="logoutUser()">Logout</button>
+  </aside>
+
+  <main class="main-content">
+
+    <div class="top-actions">
+      <div></div>
+
+      <div class="right-actions">
+        <div class="notification-area">
+          <button class="notification-bell" onclick="toggleNotifications()">
+            🔔
+            <span id="notificationCount">0</span>
+          </button>
+
+          <div class="notification-dropdown" id="notificationDropdown">
+            <h4>Notifications</h4>
+            <ul id="notificationList">
+              <li>No notifications yet.</li>
+            </ul>
+          </div>
+        </div>
+
+        <label class="theme-toggle-mini">
+          <input type="checkbox" id="themeSwitch" onchange="toggleTheme()">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+
+    <div class="page-header">
+      <h1>Manage Users</h1>
+      <p>View users, activate or deactivate accounts, and manage access.</p>
+    </div>
+
+    <section class="panel">
+      <div class="section-header">
+        <h2>User Accounts</h2>
+        <button onclick="fetchUsers()">Refresh</button>
+      </div>
+
+      <ul id="userList"></ul>
+    </section>
+  </main>
+</div>
+
+<div class="modal-overlay" id="confirmModal">
+  <div class="modal-box">
+    <h3>Confirmation</h3>
+    <p id="modalMessage">Are you sure?</p>
+
+    <div class="modal-buttons">
+      <button onclick="confirmYes()">Yes</button>
+      <button class="danger-btn" onclick="closeModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div id="liveNotificationBox" class="live-notification-box"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

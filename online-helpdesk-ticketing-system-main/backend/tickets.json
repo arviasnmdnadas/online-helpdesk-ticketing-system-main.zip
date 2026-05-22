@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "userId": 2,
+    "username": "user",
+    "title": "cannot login",
+    "description": "user cannot access the system",
+    "status": "pending",
+    "history": [
+      "ticket created"
+    ]
+  }
+]
